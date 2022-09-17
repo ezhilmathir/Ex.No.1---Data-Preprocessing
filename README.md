@@ -39,12 +39,13 @@ Another aspect is that the data set should be formatted in such a way that more 
 ```
 ## PROGRAM:
 
+
 name:ezhil mathi r 
 
 
 reg no:- 212221230026
-
 ``
+
 
 import pandas as pd
 import numpy as np
@@ -63,13 +64,13 @@ df.describe()
 # Outliers are any abnormal values going beyond
 df['Exited'].describe()
 
-""" Normalize the data - There are range of values in different columns of x are different. 
+ Normalize the data - There are range of values in different columns of x are different. 
 
 To get a correct ne plot the data of x between 0 and 1 
 
 LabelEncoder can be used to normalize labels.
 It can also be used to transform non-numerical labels to numerical labels.
-"""
+
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 
@@ -78,9 +79,9 @@ df1 = df.copy()
 df1["Geography"] = le.fit_transform(df1["Geography"])
 df1["Gender"] = le.fit_transform(df1["Gender"])
 
-'''
+
 MinMaxScaler - Transform features by scaling each feature to a given range. 
-When we normalize the dataset it brings the value of all the features between 0 and 1 so that all the columns are in the same range, and thus there is no dominant feature.'''
+When we normalize the dataset it brings the value of all the features between 0 and 1 so that all the columns are in the same range, and thus there is no dominant feature.
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
@@ -94,6 +95,7 @@ df1
 df1.describe()
 
 # Since values like Row Number, Customer Id and surname  doesn't affect the output y(Exited).
+
 #So those are not considered in the x values
 X = df1[["CreditScore","Geography","Gender","Age","Tenure","Balance","NumOfProducts","HasCrCard","IsActiveMember","EstimatedSalary"]].values
 print(X)
@@ -178,6 +180,8 @@ X_train.shape
 ![output](13.png)
 
 ## X_train shape
+
+
 
 
 ![output](14.png)
