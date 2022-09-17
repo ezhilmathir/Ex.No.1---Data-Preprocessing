@@ -23,19 +23,137 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-##ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+## ALGORITHM:
+```
+1)Importing the libraries
 
-##PROGRAM:
-/Write your code here/
+2)Importing the dataset
 
-##OUTPUT:
-/ Show the result/
+3)Taking care of missing data
 
-##RESULT
-/Type your result here/
+4)Encoding categorical data
+
+5)Normalizing the data
+
+6)Splitting the data into test and train
+```
+## PROGRAM:
+``
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("/content/drive/MyDrive/Colab Notebooks/Semester 3/19AI411 - Neural Networks/Churn_Modelling.csv")
+df
+
+df.isnull().sum()
+
+#Check for Duplicate Values
+df.duplicated()
+
+df.describe()
+
+#Detect the Outliers
+# Outliers are any abnormal values going beyond
+df['Exited'].describe()
+
+""" Normalize the data - There are range of values in different columns of x are different. 
+
+To get a correct ne plot the data of x between 0 and 1 
+
+LabelEncoder can be used to normalize labels.
+It can also be used to transform non-numerical labels to numerical labels.
+"""
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+
+df1 = df.copy()
+
+df1["Geography"] = le.fit_transform(df1["Geography"])
+df1["Gender"] = le.fit_transform(df1["Gender"])
+
+'''
+MinMaxScaler - Transform features by scaling each feature to a given range. 
+When we normalize the dataset it brings the value of all the features between 0 and 1 so that all the columns are in the same range, and thus there is no dominant feature.'''
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+df1[["CreditScore","Geography","Age","Tenure","Balance","NumOfProducts","EstimatedSalary"]] = pd.DataFrame(scaler.fit_transform(df1[["CreditScore","Geography","Age","Tenure","Balance","NumOfProducts","EstimatedSalary"]]))
+
+df1
+
+df1.describe()
+
+# Since values like Row Number, Customer Id and surname  doesn't affect the output y(Exited).
+#So those are not considered in the x values
+X = df1[["CreditScore","Geography","Gender","Age","Tenure","Balance","NumOfProducts","HasCrCard","IsActiveMember","EstimatedSalary"]].values
+print(X)
+
+y = df1.iloc[:,-1].values
+print(y)
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+print(X_train)
+print("Size of X_train: ",len(X_train))
+
+print(X_test)
+print("Size of X_test: ",len(X_test))
+
+X_train.shape
+
+``
+
+## OUTPUT:
+
+Dataset
+![output](1.png)
+
+
+Checking for Null Values
+![output](2.png)
+
+Checking for duplicate values
+![output](3.png)
+
+Describing Data
+![output](4.png)
+
+Checking for outliers in Exited Column
+![output](5.png)
+
+normalized_data
+![output](6.png)
+
+Describing Normalized Data
+![output](7.png)
+
+X - Values
+![output](8.png)
+
+
+Y - Value
+![output](9.png)
+
+
+X_train values
+![output](10.png)
+
+X_train Size
+
+![output](11.png)
+
+X_test values
+![output](12.png)
+X_test Size
+![output](13.png)
+
+X_train shape
+![output](14.png)
+
+## RESULT
+Data preprocessing is performed in a data set downloaded from Kaggle
