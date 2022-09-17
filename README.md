@@ -38,6 +38,12 @@ Another aspect is that the data set should be formatted in such a way that more 
 6)Splitting the data into test and train
 ```
 ## PROGRAM:
+
+name:ezhil mathi r 
+
+
+reg no:- 212221230026
+
 ``
 
 import pandas as pd
@@ -110,49 +116,70 @@ X_train.shape
 
 ## OUTPUT:
 
-Dataset
+## Dataset
+
+
 ![output](1.png)
 
 
-Checking for Null Values
+## Checking for Null values
+
 ![output](2.png)
 
-Checking for duplicate values
+## Checking for duplicate values
+
+
 ![output](3.png)
 
-Describing Data
+## Describing Data
+
+
 ![output](4.png)
 
-Checking for outliers in Exited Column
+## Checking for outliers in Exited Column
+
 ![output](5.png)
 
-normalized_data
+## normalized_data
+
 ![output](6.png)
 
-Describing Normalized Data
+## Describing Normalized Data
+
 ![output](7.png)
 
-X - Values
+## X - Values
+
 ![output](8.png)
 
 
-Y - Value
+## Y - Value
+
 ![output](9.png)
 
 
-X_train values
+## X_train values
+
+
 ![output](10.png)
 
-X_train Size
+## X_train Size
 
 ![output](11.png)
 
-X_test values
+## X_test values
+
 ![output](12.png)
-X_test Size
+
+
+## X_test Size
+
+
 ![output](13.png)
 
-X_train shape
+## X_train shape
+
+
 ![output](14.png)
 
 ## RESULT
